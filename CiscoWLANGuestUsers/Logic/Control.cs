@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//using System.Management.Automation;
 using System.IO;
 using System.Diagnostics;
 using ESCPOS_NET;
@@ -12,23 +11,11 @@ namespace CiscoWLANGuestUsers
 {
     public class Control
     {
-        public void RunScript(string IP, string Community, string UserName, string Password, string Description, int WLAN_ID, int LifeDays = 1)
+        public void CreateWLCGuestUser(string IP, string Community, string UserName, string Password, string Description, int WLAN_ID, int LifeDays = 1)
         {
             string Lifetime = (LifeDays * 60 * 24).ToString();
-            string command = "powershell.exe -c \".\\Powershell\\CiscoGuestWlan.ps1 -IP " + IP + " -Community \'" + Community + "\' -WLanID " + WLAN_ID + " -GuestUser \'" + UserName + "\' -GuestDesc \'" + Description + "\' -GuestLifeTimeMinute " + Lifetime + " -GuestPass \'" + Password + "\'\"";
+            //string command = "powershell.exe -c \".\\Powershell\\CiscoGuestWlan.ps1 -IP " + IP + " -Community \'" + Community + "\' -WLanID " + WLAN_ID + " -GuestUser \'" + UserName + "\' -GuestDesc \'" + Description + "\' -GuestLifeTimeMinute " + Lifetime + " -GuestPass \'" + Password + "\'\"";
             Process.Start("powershell.exe", "-c \".\\Powershell\\CiscoGuestWlan.ps1 -IP " + IP + " -Community \'" + Community + "\' -WLanID " + WLAN_ID + " -GuestUser \'" + UserName + "\' -GuestDesc \'" + Description + "\' -GuestLifeTimeMinute " + Lifetime + " -GuestPass \'" + Password + "\'\"");
-            /*
-            PowerShell ps = PowerShell.Create();
-            ps.AddScript(File.ReadAllText("@Powershell\\CiscoGuestWlan.ps1"), true);
-            ps.AddParameter("Community", Community);
-            ps.AddParameter("IP", IP);
-            ps.AddParameter("WLanID", WLAN_ID);
-            ps.AddParameter("GuestUser", UserName);
-            ps.AddParameter("GuestDesc", Description);
-            ps.AddParameter("GuestLifeTimeMinute", LifeDays * 24 * 60);
-            ps.AddParameter("GuestPass", Password);
-            ps.Invoke<string>();
-            */
         }
 
         public async void PrintTicket(ImmediateNetworkPrinter NetworkPrinter, string Username, string Password)
@@ -62,14 +49,79 @@ namespace CiscoWLANGuestUsers
                 e.SetStyles(ESCPOS_NET.Emitters.PrintStyle.DoubleHeight | ESCPOS_NET.Emitters.PrintStyle.DoubleWidth),
                 e.PrintLine(Password),
                 e.PrintLine(""),
-                e.SetStyles(ESCPOS_NET.Emitters.PrintStyle.None),
-                e.FullCut()
+                //e.SetStyles(ESCPOS_NET.Emitters.PrintStyle.None),
+                e.FullCutAfterFeed(5)
                 )) ;
         }
 
         public ImmediateNetworkPrinter GetNetworkPrinter(string HostName_or_IP, int port = 9100)
         {
             return new ImmediateNetworkPrinter(new ImmediateNetworkPrinterSettings() { ConnectionString = $"{HostName_or_IP}:{port}", PrinterName = "EPSON TM-m30" });
+        }
+
+        public void SaveSettings(UserSettings userSettings)
+        {
+            General.Default.PrinterAddress = userSettings.PrinterAddress;
+            General.Default.PrinterPort = userSettings.PrinterPort;
+            General.Default.WLCAdresses = userSettings.WLCAddresses;
+            General.Default.WLCCommunity = userSettings.Community;
+            General.Default.Save();
+        }
+
+        public UserSettings LoadSettings()
+        {
+            UserSettings userSettings = new UserSettings();
+            userSettings.PrinterAddress = General.Default.PrinterAddress;
+            userSettings.PrinterPort = General.Default.PrinterPort;
+            userSettings.WLCAddresses = General.Default.WLCAdresses;
+            userSettings.Community = General.Default.WLCCommunity;
+            return userSettings;
+        }
+
+        public void GenerateGuestUser(string Username = null, string PW = null, int LifeTime = 1, IProgress<string> progress = null)
+        {
+            if (progress != null)
+                progress.Report("Create New User ...");
+            if (Username == null)
+            {
+                Username = "User_" + General.Default.UserCounter.ToString();
+                General.Default.UserCounter++;
+                General.Default.Save();
+            }
+            if (PW == null)
+            {
+                PW = CreatePassword(8);
+            }
+
+            UserSettings userSettings = LoadSettings();
+
+            foreach (WLCController wlc in userSettings.WLCControllers)
+            {
+                if (progress != null)
+                    progress.Report("Create Guest User on " + wlc.Address);
+                CreateWLCGuestUser(wlc.Address, userSettings.Community, Username, PW, "Created by SNMP", wlc.WLAN_ID, LifeTime);
+                System.Threading.Thread.Sleep(5000);
+            }
+            if (progress != null)
+                progress.Report("User: " + Username + ", PW: " + PW + " created. Printing ...");
+            PrintTicket(GetNetworkPrinter(userSettings.PrinterAddress, userSettings.PrinterPort), Username, PW);
+            if (progress != null)
+            {
+                progress.Report("User: " + Username + ", PW: " + PW + " created. Finished.");
+                System.Threading.Thread.Sleep(5000);
+            }
+        }
+
+        string CreatePassword(int length)
+        {
+            const string valid = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+            StringBuilder res = new StringBuilder();
+            Random rnd = new Random();
+            while (0 < length--)
+            {
+                res.Append(valid[rnd.Next(valid.Length)]);
+            }
+            return res.ToString();
         }
     }
 }
