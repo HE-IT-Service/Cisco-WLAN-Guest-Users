@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("CiscoWLANGuestUsers")]
+[assembly: AssemblyTitle("Cisco WLAN Guest Users")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("TecAlliance")]
-[assembly: AssemblyProduct("CiscoWLANGuestUsers")]
-[assembly: AssemblyCopyright("Copyright © TecAlliance 2023")]
+[assembly: AssemblyCompany("HE IT-Service")]
+[assembly: AssemblyProduct("Cisco WLAN Guest Users")]
+[assembly: AssemblyCopyright("Copyright © HE IT-Service 2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

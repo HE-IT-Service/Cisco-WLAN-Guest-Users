@@ -35,7 +35,7 @@ namespace CiscoWLANGuestUsers
             GenerateUser();
         }
 
-        async void GenerateUser(string username = null, string PW = null, int LifeTime = 1)
+        async void GenerateUser(string username = null, string PW = null, int LifeTime = 1, bool print = true)
         {
             Loading l = new Loading();
             l.Show();
@@ -44,9 +44,14 @@ namespace CiscoWLANGuestUsers
                 l.SetStatus(v);
             });
 
-            await Task.Run(() => crtl.GenerateGuestUser(username, PW, LifeTime, progress));
+            await Task.Run(() => crtl.GenerateGuestUser(username, PW, LifeTime, progress, print));
 
             l.Close();
+
+            tbUser.Text = "";
+            tbPW.Text = "";
+            tbLifetime.Text = "";
+            tbUser.Focus();
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -59,6 +64,56 @@ namespace CiscoWLANGuestUsers
         {
             UserSettings userSettings = crtl.LoadSettings();
             crtl.OpenCashDrawer(crtl.GetNetworkPrinter(userSettings.PrinterAddress, userSettings.PrinterPort));
+        }
+
+        private void btCreate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                GenerateUser(tbUser.Text, tbPW.Text, Convert.ToInt16(tbLifetime.Text), false);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Data Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void tbLifetime_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && e.Modifiers == Keys.Control)
+            {
+                try
+                {
+                    GenerateUser(tbUser.Text, tbPW.Text, Convert.ToInt16(tbLifetime.Text));
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Data Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (e.KeyCode == Keys.Enter)
+            {
+                try
+                {
+                    GenerateUser(tbUser.Text, tbPW.Text, Convert.ToInt16(tbLifetime.Text), false);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Data Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void btCreatePrint_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                GenerateUser(tbUser.Text, tbPW.Text, Convert.ToInt16(tbLifetime.Text));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Data Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

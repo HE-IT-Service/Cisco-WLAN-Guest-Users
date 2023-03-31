@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>wifi.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ESCPOS_NET, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ESCPOS_NET.3.0.0\lib\netstandard2.0\ESCPOS_NET.dll</HintPath>
@@ -140,6 +143,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>General.settings</DependentUpon>
     </Compile>
+    <Content Include="wifi.ico" />
     <EmbeddedResource Include="GUI\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

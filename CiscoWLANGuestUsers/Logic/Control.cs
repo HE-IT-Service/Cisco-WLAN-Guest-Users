@@ -89,9 +89,11 @@ namespace CiscoWLANGuestUsers
             return userSettings;
         }
 
-        public void GenerateGuestUser(string Username = null, string PW = null, int LifeTime = 1, IProgress<string> progress = null)
+        public void GenerateGuestUser(string Username = null, string PW = null, int LifeTime = 1, IProgress<string> progress = null, bool print = true)
         {
+            Console.WriteLine("Load User Settings");
             UserSettings userSettings = LoadSettings();
+            Console.WriteLine("Printer Address: " + userSettings.PrinterAddress);
 
             if (progress != null)
                 progress.Report("Create New User ...");
@@ -105,7 +107,9 @@ namespace CiscoWLANGuestUsers
             {
                 PW = CreatePassword(8);
             }
-
+            Console.WriteLine("Username: " + Username);
+            Console.WriteLine("PW: " + PW);
+            Console.WriteLine("Add User to WLCs");
             foreach (WLCController wlc in userSettings.WLCControllers)
             {
                 if (progress != null)
@@ -113,14 +117,20 @@ namespace CiscoWLANGuestUsers
                 CreateWLCGuestUser(wlc.Address, userSettings.Community, Username, PW, "Created by SNMP", wlc.WLAN_ID, LifeTime);
                 System.Threading.Thread.Sleep(5000);
             }
-            if (progress != null)
-                progress.Report("User: " + Username + ", PW: " + PW + " created. Printing ...");
-            PrintTicket(GetNetworkPrinter(userSettings.PrinterAddress, userSettings.PrinterPort), Username, PW);
+            if (print)
+            {
+                Console.WriteLine("Print User Data");
+                if (progress != null)
+                    progress.Report("User: " + Username + ", PW: " + PW + " created. Printing ...");
+                PrintTicket(GetNetworkPrinter(userSettings.PrinterAddress, userSettings.PrinterPort), Username, PW);
+            }
             if (progress != null)
             {
                 progress.Report("User: " + Username + ", PW: " + PW + " created. Finished.");
                 System.Threading.Thread.Sleep(5000);
             }
+            Console.WriteLine("Finished");
+            return;
         }
 
         string CreatePassword(int length)
