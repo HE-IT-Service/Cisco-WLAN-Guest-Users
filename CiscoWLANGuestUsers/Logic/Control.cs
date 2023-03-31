@@ -15,7 +15,7 @@ namespace CiscoWLANGuestUsers
         {
             string Lifetime = (LifeDays * 60 * 24).ToString();
             //string command = "powershell.exe -c \".\\Powershell\\CiscoGuestWlan.ps1 -IP " + IP + " -Community \'" + Community + "\' -WLanID " + WLAN_ID + " -GuestUser \'" + UserName + "\' -GuestDesc \'" + Description + "\' -GuestLifeTimeMinute " + Lifetime + " -GuestPass \'" + Password + "\'\"";
-            Process.Start("powershell.exe", "-c \".\\Powershell\\CiscoGuestWlan.ps1 -IP " + IP + " -Community \'" + Community + "\' -WLanID " + WLAN_ID + " -GuestUser \'" + UserName + "\' -GuestDesc \'" + Description + "\' -GuestLifeTimeMinute " + Lifetime + " -GuestPass \'" + Password + "\'\"");
+            Process.Start("powershell.exe", "-WindowStyle hidden -c \".\\Powershell\\CiscoGuestWlan.ps1 -IP " + IP + " -Community \'" + Community + "\' -WLanID " + WLAN_ID + " -GuestUser \'" + UserName + "\' -GuestDesc \'" + Description + "\' -GuestLifeTimeMinute " + Lifetime + " -GuestPass \'" + Password + "\'\"");
         }
 
         public async void PrintTicket(ImmediateNetworkPrinter NetworkPrinter, string Username, string Password)
