@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32414.318
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CiscoWLANGuestUsers", "CiscoWLANGuestUsers\CiscoWLANGuestUsers.csproj", "{8BCCAB1B-F68A-4EE6-81A9-8A55A16A4660}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CiscoWLANGuestUsers", "CiscoWLANGuestUsers\CiscoWLANGuestUsers.csproj", "{5A777BEC-5145-441A-9399-D56AB4126363}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CiscoWLANGuestUsersTest", "CiscoWLANGuestUsersTest\CiscoWLANGuestUsersTest.csproj", "{F50F56F4-AEC2-43B9-899B-8D781640B387}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8BCCAB1B-F68A-4EE6-81A9-8A55A16A4660}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8BCCAB1B-F68A-4EE6-81A9-8A55A16A4660}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8BCCAB1B-F68A-4EE6-81A9-8A55A16A4660}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8BCCAB1B-F68A-4EE6-81A9-8A55A16A4660}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A777BEC-5145-441A-9399-D56AB4126363}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A777BEC-5145-441A-9399-D56AB4126363}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A777BEC-5145-441A-9399-D56AB4126363}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A777BEC-5145-441A-9399-D56AB4126363}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F50F56F4-AEC2-43B9-899B-8D781640B387}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F50F56F4-AEC2-43B9-899B-8D781640B387}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F50F56F4-AEC2-43B9-899B-8D781640B387}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F50F56F4-AEC2-43B9-899B-8D781640B387}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
