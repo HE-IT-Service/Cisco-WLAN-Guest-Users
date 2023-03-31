@@ -115,5 +115,10 @@ namespace CiscoWLANGuestUsers
                 MessageBox.Show(ex.Message, "Data Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void createShortcutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            crtl.CreateShortcut();
+        }
     }
 }

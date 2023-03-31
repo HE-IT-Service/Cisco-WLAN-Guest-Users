@@ -32,6 +32,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openCashDrawerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.createShortcutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -68,6 +69,7 @@
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openCashDrawerToolStripMenuItem,
+            this.createShortcutToolStripMenuItem,
             this.settingsToolStripMenuItem,
             this.closeToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
@@ -82,17 +84,24 @@
             this.openCashDrawerToolStripMenuItem.Text = "Open Cash Drawer";
             this.openCashDrawerToolStripMenuItem.Click += new System.EventHandler(this.openCashDrawerToolStripMenuItem_Click);
             // 
+            // createShortcutToolStripMenuItem
+            // 
+            this.createShortcutToolStripMenuItem.Name = "createShortcutToolStripMenuItem";
+            this.createShortcutToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.createShortcutToolStripMenuItem.Text = "Create Shortcut";
+            this.createShortcutToolStripMenuItem.Click += new System.EventHandler(this.createShortcutToolStripMenuItem_Click);
+            // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.settingsToolStripMenuItem.Text = "Settings";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.closeToolStripMenuItem.Text = "Close";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
@@ -303,6 +312,7 @@
         private System.Windows.Forms.TextBox tbLifetime;
         private System.Windows.Forms.Button btCreate;
         private System.Windows.Forms.Button btCreatePrint;
+        private System.Windows.Forms.ToolStripMenuItem createShortcutToolStripMenuItem;
     }
 }
 
