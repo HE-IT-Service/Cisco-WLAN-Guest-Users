@@ -12,6 +12,7 @@ namespace CiscoWLANGuestUsers
         public int PrinterPort { get; set; }
         public string Community { get; set; }
         string WLCAddressString;
+        public string Prefix { get; set; }
         public string WLCAddresses
         {
             get

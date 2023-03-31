@@ -22,6 +22,7 @@ namespace CiscoWLANGuestUsers
             tbPrinterAddress.Text = userSettings.PrinterAddress;
             tbPrinterPort.Text = userSettings.PrinterPort.ToString();
             tbWLCAddresses.Text = userSettings.WLCAddresses;
+            tbPrefix.Text = userSettings.Prefix;
         }
 
         private void btSave_Click(object sender, EventArgs e)
@@ -33,6 +34,7 @@ namespace CiscoWLANGuestUsers
                 userSettings.PrinterAddress = tbPrinterAddress.Text;
                 userSettings.Community = tbCommunity.Text;
                 userSettings.WLCAddresses = tbWLCAddresses.Text;
+                userSettings.Prefix = tbPrefix.Text;
                 crtl.SaveSettings(userSettings);
                 this.Close();
             }

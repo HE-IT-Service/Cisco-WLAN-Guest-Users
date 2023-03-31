@@ -65,6 +65,7 @@ namespace CiscoWLANGuestUsers
             General.Default.PrinterPort = userSettings.PrinterPort;
             General.Default.WLCAdresses = userSettings.WLCAddresses;
             General.Default.WLCCommunity = userSettings.Community;
+            General.Default.Prefix = userSettings.Prefix;
             General.Default.Save();
         }
 
@@ -75,16 +76,19 @@ namespace CiscoWLANGuestUsers
             userSettings.PrinterPort = General.Default.PrinterPort;
             userSettings.WLCAddresses = General.Default.WLCAdresses;
             userSettings.Community = General.Default.WLCCommunity;
+            userSettings.Prefix = General.Default.Prefix;
             return userSettings;
         }
 
         public void GenerateGuestUser(string Username = null, string PW = null, int LifeTime = 1, IProgress<string> progress = null)
         {
+            UserSettings userSettings = LoadSettings();
+
             if (progress != null)
                 progress.Report("Create New User ...");
             if (Username == null)
             {
-                Username = "User_" + General.Default.UserCounter.ToString();
+                Username = userSettings.Prefix + "_" + General.Default.UserCounter.ToString();
                 General.Default.UserCounter++;
                 General.Default.Save();
             }
@@ -92,8 +96,6 @@ namespace CiscoWLANGuestUsers
             {
                 PW = CreatePassword(8);
             }
-
-            UserSettings userSettings = LoadSettings();
 
             foreach (WLCController wlc in userSettings.WLCControllers)
             {

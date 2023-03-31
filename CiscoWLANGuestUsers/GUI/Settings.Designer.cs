@@ -39,6 +39,8 @@
             this.tbWLCAddresses = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btSave = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.tbPrefix = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,18 +58,22 @@
             this.tableLayoutPanel1.Controls.Add(this.tbCommunity, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.tbWLCAddresses, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.label5, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.btSave, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.btSave, 1, 7);
+            this.tableLayoutPanel1.Controls.Add(this.label6, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.tbPrefix, 1, 5);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 6;
+            this.tableLayoutPanel1.RowCount = 8;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(526, 182);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(526, 213);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // label1
@@ -153,14 +159,14 @@
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label5.Location = new System.Drawing.Point(153, 108);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(370, 40);
+            this.label5.Size = new System.Drawing.Size(370, 27);
             this.label5.TabIndex = 2;
             this.label5.Text = "Use: Address,WLAN_ID; Address, WLAN_ID";
             // 
             // btSave
             // 
             this.btSave.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btSave.Location = new System.Drawing.Point(346, 151);
+            this.btSave.Location = new System.Drawing.Point(346, 182);
             this.btSave.Name = "btSave";
             this.btSave.Size = new System.Drawing.Size(177, 28);
             this.btSave.TabIndex = 3;
@@ -168,11 +174,30 @@
             this.btSave.UseVisualStyleBackColor = true;
             this.btSave.Click += new System.EventHandler(this.btSave_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label6.Location = new System.Drawing.Point(3, 135);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(144, 27);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "Userprefix:";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // tbPrefix
+            // 
+            this.tbPrefix.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbPrefix.Location = new System.Drawing.Point(153, 138);
+            this.tbPrefix.Name = "tbPrefix";
+            this.tbPrefix.Size = new System.Drawing.Size(370, 20);
+            this.tbPrefix.TabIndex = 5;
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(526, 182);
+            this.ClientSize = new System.Drawing.Size(526, 213);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Settings";
             this.Text = "Settings";
@@ -195,5 +220,7 @@
         private System.Windows.Forms.TextBox tbWLCAddresses;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btSave;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox tbPrefix;
     }
 }

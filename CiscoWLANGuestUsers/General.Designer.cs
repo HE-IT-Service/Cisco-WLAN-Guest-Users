@@ -82,5 +82,17 @@ namespace CiscoWLANGuestUsers {
                 this["UserCounter"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("User")]
+        public string Prefix {
+            get {
+                return ((string)(this["Prefix"]));
+            }
+            set {
+                this["Prefix"] = value;
+            }
+        }
     }
 }
