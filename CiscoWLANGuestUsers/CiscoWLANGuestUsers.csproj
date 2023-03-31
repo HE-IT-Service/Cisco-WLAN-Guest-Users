@@ -132,6 +132,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="packages.config" />
+    <Content Include="Images\HEITService.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Powershell\CiscoGuestWlan.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

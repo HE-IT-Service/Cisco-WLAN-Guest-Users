@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 //using System.Management.Automation;
 using System.IO;
 using System.Diagnostics;
+using ESCPOS_NET;
 
 namespace CiscoWLANGuestUsers
 {
@@ -28,6 +29,47 @@ namespace CiscoWLANGuestUsers
             ps.AddParameter("GuestPass", Password);
             ps.Invoke<string>();
             */
+        }
+
+        public async void PrintTicket(ImmediateNetworkPrinter NetworkPrinter, string Username, string Password)
+        {
+            var e = new ESCPOS_NET.Emitters.EPSON();
+            await NetworkPrinter.WriteAsync(
+             ESCPOS_NET.Utilities.ByteSplicer.Combine(
+                e.SetBarWidth(ESCPOS_NET.Emitters.BarWidth.Default),
+                e.CenterAlign(),
+                e.PrintImage(File.ReadAllBytes("Images/HEITService.png"), true),
+                e.PrintLine(""),
+                //e.LeftAlign(),
+                e.PrintLine(""),
+                //e.PrintLine("1234567890abcdefghijklmnopqrstuvwxyz1234567890abcdefghijk"),
+                e.SetStyles(ESCPOS_NET.Emitters.PrintStyle.DoubleHeight | ESCPOS_NET.Emitters.PrintStyle.DoubleWidth | ESCPOS_NET.Emitters.PrintStyle.Underline | ESCPOS_NET.Emitters.PrintStyle.Bold),
+                e.PrintLine("Gast WLAN Zugang"),
+                e.PrintLine(""),
+                e.PrintLine(""),
+                e.SetStyles(ESCPOS_NET.Emitters.PrintStyle.Bold),
+                e.PrintLine("SSID:"),
+                e.SetStyles(ESCPOS_NET.Emitters.PrintStyle.DoubleHeight | ESCPOS_NET.Emitters.PrintStyle.DoubleWidth),
+                e.PrintLine("HE IT-Service Guest"),
+                e.PrintLine(""),
+                e.SetStyles(ESCPOS_NET.Emitters.PrintStyle.Bold),
+                e.PrintLine("Username:"),
+                e.SetStyles(ESCPOS_NET.Emitters.PrintStyle.DoubleHeight | ESCPOS_NET.Emitters.PrintStyle.DoubleWidth),
+                e.PrintLine(Username),
+                e.PrintLine(""),
+                e.SetStyles(ESCPOS_NET.Emitters.PrintStyle.Bold),
+                e.PrintLine("Password:"),
+                e.SetStyles(ESCPOS_NET.Emitters.PrintStyle.DoubleHeight | ESCPOS_NET.Emitters.PrintStyle.DoubleWidth),
+                e.PrintLine(Password),
+                e.PrintLine(""),
+                e.SetStyles(ESCPOS_NET.Emitters.PrintStyle.None),
+                e.FullCut()
+                )) ;
+        }
+
+        public ImmediateNetworkPrinter GetNetworkPrinter(string HostName_or_IP, int port = 9100)
+        {
+            return new ImmediateNetworkPrinter(new ImmediateNetworkPrinterSettings() { ConnectionString = $"{HostName_or_IP}:{port}", PrinterName = "EPSON TM-m30" });
         }
     }
 }
