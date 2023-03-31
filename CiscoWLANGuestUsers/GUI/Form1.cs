@@ -54,5 +54,11 @@ namespace CiscoWLANGuestUsers
             if (e.KeyCode == Keys.F11)
                 GenerateUser();
         }
+
+        private void openCashDrawerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UserSettings userSettings = crtl.LoadSettings();
+            crtl.OpenCashDrawer(crtl.GetNetworkPrinter(userSettings.PrinterAddress, userSettings.PrinterPort));
+        }
     }
 }

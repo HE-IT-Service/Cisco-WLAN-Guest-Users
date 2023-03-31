@@ -35,6 +35,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btGenAuto = new System.Windows.Forms.Button();
+            this.openCashDrawerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -53,6 +54,7 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openCashDrawerToolStripMenuItem,
             this.settingsToolStripMenuItem,
             this.closeToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
@@ -112,6 +114,13 @@
             this.btGenAuto.UseVisualStyleBackColor = true;
             this.btGenAuto.Click += new System.EventHandler(this.btGenAuto_Click);
             // 
+            // openCashDrawerToolStripMenuItem
+            // 
+            this.openCashDrawerToolStripMenuItem.Name = "openCashDrawerToolStripMenuItem";
+            this.openCashDrawerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openCashDrawerToolStripMenuItem.Text = "Open Cash Drawer";
+            this.openCashDrawerToolStripMenuItem.Click += new System.EventHandler(this.openCashDrawerToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -142,6 +151,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Button btGenAuto;
+        private System.Windows.Forms.ToolStripMenuItem openCashDrawerToolStripMenuItem;
     }
 }
 

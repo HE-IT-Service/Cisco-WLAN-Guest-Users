@@ -54,6 +54,15 @@ namespace CiscoWLANGuestUsers
                 )) ;
         }
 
+        public async void OpenCashDrawer(ImmediateNetworkPrinter NetworkPrinter)
+        {
+            var e = new ESCPOS_NET.Emitters.EPSON();
+            await NetworkPrinter.WriteAsync(
+             ESCPOS_NET.Utilities.ByteSplicer.Combine(
+                e.CashDrawerOpenPin2()
+            ));
+        }
+
         public ImmediateNetworkPrinter GetNetworkPrinter(string HostName_or_IP, int port = 9100)
         {
             return new ImmediateNetworkPrinter(new ImmediateNetworkPrinterSettings() { ConnectionString = $"{HostName_or_IP}:{port}", PrinterName = "EPSON TM-m30" });

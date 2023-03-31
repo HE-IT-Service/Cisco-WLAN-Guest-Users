@@ -21,5 +21,11 @@ namespace CiscoWLANGuestUsersTest
             Control c = new Control();
             c.PrintTicket(c.GetNetworkPrinter("10.96.5.252"), "TestUser", "TestPW");
         }
+        [TestMethod]
+        public void OpenCashDrawer()
+        {
+            Control c = new Control();
+            c.OpenCashDrawer(c.GetNetworkPrinter("10.96.5.252"));
+        }
     }
 }
