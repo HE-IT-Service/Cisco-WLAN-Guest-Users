@@ -19,7 +19,7 @@ namespace CiscoWLANGuestUsersTest
         public void PrintTestLabel()
         {
             Control c = new Control();
-            c.PrintTicket(c.GetNetworkPrinter("IP"), "TestUser", "TestPW");
+            c.PrintTicket(c.GetNetworkPrinter("IP"), "TestUser", "TestPW", "TestWLAN");
         }
         [TestMethod]
         public void OpenCashDrawer()

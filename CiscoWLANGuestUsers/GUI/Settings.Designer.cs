@@ -42,6 +42,8 @@
             this.btSave = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.tbPrefix = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.tbWLANName = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,13 +61,16 @@
             this.tableLayoutPanel1.Controls.Add(this.tbCommunity, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.tbWLCAddresses, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.label5, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.btSave, 1, 7);
+            this.tableLayoutPanel1.Controls.Add(this.btSave, 1, 8);
             this.tableLayoutPanel1.Controls.Add(this.label6, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.tbPrefix, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.label7, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.tbWLANName, 1, 6);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 8;
+            this.tableLayoutPanel1.RowCount = 9;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
@@ -74,7 +79,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(526, 213);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(526, 246);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // label1
@@ -167,7 +172,7 @@
             // btSave
             // 
             this.btSave.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btSave.Location = new System.Drawing.Point(346, 182);
+            this.btSave.Location = new System.Drawing.Point(346, 215);
             this.btSave.Name = "btSave";
             this.btSave.Size = new System.Drawing.Size(177, 28);
             this.btSave.TabIndex = 3;
@@ -194,11 +199,30 @@
             this.tbPrefix.Size = new System.Drawing.Size(370, 20);
             this.tbPrefix.TabIndex = 5;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label7.Location = new System.Drawing.Point(3, 162);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(144, 27);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "WLAN Name:";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // tbWLANName
+            // 
+            this.tbWLANName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbWLANName.Location = new System.Drawing.Point(153, 165);
+            this.tbWLANName.Name = "tbWLANName";
+            this.tbWLANName.Size = new System.Drawing.Size(370, 20);
+            this.tbWLANName.TabIndex = 7;
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(526, 213);
+            this.ClientSize = new System.Drawing.Size(526, 246);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Settings";
@@ -224,5 +248,7 @@
         private System.Windows.Forms.Button btSave;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox tbPrefix;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox tbWLANName;
     }
 }

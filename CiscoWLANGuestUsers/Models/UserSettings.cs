@@ -39,6 +39,7 @@ namespace CiscoWLANGuestUsers
             }
         }
         public List<WLCController> WLCControllers { get; private set; }
+        public string WLANName { get; set; }
     }
 
     public class WLCController

@@ -24,7 +24,7 @@ namespace CiscoWLANGuestUsers
             //Process p2 = Process.Start("powershell.exe");
         }
 
-        public async void PrintTicket(ImmediateNetworkPrinter NetworkPrinter, string Username, string Password)
+        public async void PrintTicket(ImmediateNetworkPrinter NetworkPrinter, string Username, string Password, string WLANName)
         {
             var e = new ESCPOS_NET.Emitters.EPSON();
             await NetworkPrinter.WriteAsync(
@@ -43,7 +43,7 @@ namespace CiscoWLANGuestUsers
                 e.SetStyles(ESCPOS_NET.Emitters.PrintStyle.Bold),
                 e.PrintLine("SSID:"),
                 e.SetStyles(ESCPOS_NET.Emitters.PrintStyle.DoubleHeight | ESCPOS_NET.Emitters.PrintStyle.DoubleWidth),
-                e.PrintLine("HE IT-Service Guest"),
+                e.PrintLine(WLANName),
                 e.PrintLine(""),
                 e.SetStyles(ESCPOS_NET.Emitters.PrintStyle.Bold),
                 e.PrintLine("Username:"),
@@ -81,6 +81,7 @@ namespace CiscoWLANGuestUsers
             General.Default.WLCAdresses = userSettings.WLCAddresses;
             General.Default.WLCCommunity = userSettings.Community;
             General.Default.Prefix = userSettings.Prefix;
+            General.Default.WLANName = userSettings.WLANName;
             General.Default.Save();
         }
 
@@ -92,6 +93,7 @@ namespace CiscoWLANGuestUsers
             userSettings.WLCAddresses = General.Default.WLCAdresses;
             userSettings.Community = General.Default.WLCCommunity;
             userSettings.Prefix = General.Default.Prefix;
+            userSettings.WLANName = General.Default.WLANName;
             return userSettings;
         }
 
@@ -128,7 +130,7 @@ namespace CiscoWLANGuestUsers
                 Console.WriteLine("Print User Data");
                 if (progress != null)
                     progress.Report("User: " + Username + ", PW: " + PW + " created. Printing ...");
-                PrintTicket(GetNetworkPrinter(userSettings.PrinterAddress, userSettings.PrinterPort), Username, PW);
+                PrintTicket(GetNetworkPrinter(userSettings.PrinterAddress, userSettings.PrinterPort), Username, PW, userSettings.WLANName);
             }
             if (progress != null)
             {
