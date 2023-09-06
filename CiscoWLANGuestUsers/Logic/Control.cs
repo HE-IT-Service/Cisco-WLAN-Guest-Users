@@ -27,6 +27,7 @@ namespace CiscoWLANGuestUsers
         public async void PrintTicket(ImmediateNetworkPrinter NetworkPrinter, string Username, string Password, string WLANName)
         {
             var e = new ESCPOS_NET.Emitters.EPSON();
+            string WLANCode = "WIFI:T:nopass;S:" + WLANName + ";P:;H:;;"
             await NetworkPrinter.WriteAsync(
              ESCPOS_NET.Utilities.ByteSplicer.Combine(
                 e.SetBarWidth(ESCPOS_NET.Emitters.BarWidth.Default),
