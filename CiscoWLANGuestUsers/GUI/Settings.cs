@@ -24,6 +24,7 @@ namespace CiscoWLANGuestUsers
             tbWLCAddresses.Text = userSettings.WLCAddresses;
             tbPrefix.Text = userSettings.Prefix;
             tbWLANName.Text = userSettings.WLANName;
+            LoadPicture();
         }
 
         private void btSave_Click(object sender, EventArgs e)
@@ -44,6 +45,26 @@ namespace CiscoWLANGuestUsers
             {
                 MessageBox.Show(ex.Message, "Settings Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        void LoadPicture()
+        {
+            Image logo = Image.FromFile(@"Images\logo.png");
+            Bitmap logobmp = new Bitmap(logo);
+            logoPreview.Image = logobmp;
+        }
+
+        private void changeLogo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.FileOk += (object senderinfo, CancelEventArgs eventargs) =>
+            {
+                crtl.SaveNewLogo(ofd.FileName);
+                LoadPicture();
+            };
+            //ofd.Filter = "All Graphics Types|*.bmp;*.jpg;*.jpeg;*.png;*.tif;*.tiff|BMP|*.bmp|GIF|*.gif|JPG|*.jpg;*.jpeg|PNG|*.png|TIFF|*.tif;*.tiff";
+            ofd.Filter = "PNG|*.png|All Files|*.*";
+            ofd.ShowDialog();
         }
     }
 }

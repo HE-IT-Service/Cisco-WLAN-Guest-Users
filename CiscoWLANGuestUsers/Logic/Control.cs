@@ -27,12 +27,12 @@ namespace CiscoWLANGuestUsers
         public async void PrintTicket(ImmediateNetworkPrinter NetworkPrinter, string Username, string Password, string WLANName)
         {
             var e = new ESCPOS_NET.Emitters.EPSON();
-            string WLANCode = "WIFI:T:nopass;S:" + WLANName + ";P:;H:;;"
+            string WLANCode = "WIFI:T:nopass;S:" + WLANName + ";P:;H:;;";
             await NetworkPrinter.WriteAsync(
              ESCPOS_NET.Utilities.ByteSplicer.Combine(
                 e.SetBarWidth(ESCPOS_NET.Emitters.BarWidth.Default),
                 e.CenterAlign(),
-                e.PrintImage(File.ReadAllBytes("Images/HEITService.png"), true),
+                e.PrintImage(File.ReadAllBytes("Images/HEITService.png"), true), //512 x 159 px
                 e.PrintLine(""),
                 //e.LeftAlign(),
                 e.PrintLine(""),
@@ -152,6 +152,11 @@ namespace CiscoWLANGuestUsers
                 res.Append(valid[rnd.Next(valid.Length)]);
             }
             return res.ToString();
+        }
+
+        public void SaveNewLogo(string path)
+        {
+            File.Copy(path, @"Images\logo.png", true);
         }
     }
 }

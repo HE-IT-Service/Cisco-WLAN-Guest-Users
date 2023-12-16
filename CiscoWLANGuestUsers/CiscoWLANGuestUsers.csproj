@@ -28,7 +28,7 @@
     <UpdateUrl>\\Zuhause.local\data\Gemeinsam\Installationen\Cisco WLAN Guest Users\</UpdateUrl>
     <ProductName>Cisco WLAN Guest Users</ProductName>
     <PublisherName>HE IT-Service</PublisherName>
-    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationRevision>4</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -67,6 +67,13 @@
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>CiscoWLANGuestUsers.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ESCPOS_NET, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -176,6 +183,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>General.settings</DependentUpon>
     </Compile>
+    <Content Include="Images\logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="wifi.ico" />
     <EmbeddedResource Include="GUI\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -195,6 +205,7 @@
     <EmbeddedResource Include="GUI\Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="app.manifest" />
     <None Include="packages.config" />
     <Content Include="Images\HEITService.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
