@@ -52,6 +52,7 @@ namespace CiscoWLANGuestUsers
             Image logo = Image.FromFile(@"Images\logo.png");
             Bitmap logobmp = new Bitmap(logo);
             logoPreview.Image = logobmp;
+            logo.Dispose();
         }
 
         private void changeLogo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -59,6 +60,7 @@ namespace CiscoWLANGuestUsers
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.FileOk += (object senderinfo, CancelEventArgs eventargs) =>
             {
+                logoPreview.Image.Dispose();
                 crtl.SaveNewLogo(ofd.FileName);
                 LoadPicture();
             };
